@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gallo Stands — Stands publicitarios personalizados</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --brand-green: #25D366;
+            --brand-dark: #0e0e12;
+            --brand-gray: #f4f8f7;
+            --text-muted: #366475;
+            --accent: #00b7ff;
+            --deep: #0a1b2b;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            color: #1e1e1e;
+            background: #c0dbcd;
+        }
+
+        .navbar {
+            background: rgba(10, 27, 43, .9);
+            backdrop-filter: saturate(140%) blur(4px);
+        }
+
+        .navbar-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 700;
+            letter-spacing: .4px;
+            color: #fff !important;
+        }
+
+        .nav-link {
+            color: #dbe7f4 !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+        }
+
+        .btn-brand {
+            background: var(--brand-green);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, .22);
+        }
+
+        .btn-brand:hover {
+            filter: brightness(1.03);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(120deg, rgba(10, 27, 43, .9) 0%, rgba(10, 27, 43, .7) 45%, rgba(10, 27, 43, .55) 100%),
+                url('https://images.unsplash.com/photo-1545239351-1141ad53f421?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+            color: #fff;
+            min-height: 88vh;
+            display: grid;
+            align-items: center;
+        }
+
+        .hero .lead {
+            color: #d7e7f7;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 18px;
+            padding: 1.25rem;
+            backdrop-filter: blur(6px);
+        }
+
+        /* Services */
+        .section-muted {
+            background: var(--brand-gray);
+        }
+
+        .card-service {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
+            overflow: hidden;
+            transition: transform .25s ease, box-shadow .25s ease;
+            background: #fff;
+        }
+
+        .card-service:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, .12);
+        }
+
+        .card-service .badge {
+            background: var(--deep);
+        }
+
+        .card-img-top {
+            max-height: 220px;
+            object-fit: cover;
+        }
+
+        /* Experience & values */
+        .experience {
+            background: #0c1320;
+            color: #eaf3ff;
+        }
+
+        .value-item {
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .14);
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+        }
+
+        .value-item i {
+            color: var(--accent);
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #eef2f7;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
+            padding: 1.25rem;
+        }
+
+        .stars {
+            color: #ffb703;
+        }
+
+        .avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #eef2f7;
+        }
+
+        /* Contact */
+        .contact-form {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #012620;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
+            padding: 1.2rem;
+        }
+
+        .contact-info {
+            background: #0c1320;
+            color: #eaf3ff;
+            border-radius: 16px;
+            padding: 1.2rem;
+        }
+
+        .contact-info a {
+            color: #aee1ff;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #0e0e12;
+            color: #bfcec4;
+        }
+
+        /* WhatsApp floating */
+        .whatsapp-float {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 1040;
+        }
+
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            background: var(--brand-green);
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            padding: .75rem 1rem;
+            font-weight: 600;
+            box-shadow: 0 14px 30px rgba(37, 211, 102, .35);
+        }
+
+        .whatsapp-button i {
+            font-size: 1.2rem;
+        }
+
+        /* Small utilities */
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Gallo Stands</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+        <div class="container py-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="hero-card">
+                        <h1 class="display-6 mb-3">Stands publicitarios personalizados para ferias y eventos</h1>
+                        <p class="lead mb-4">Diseño, renta y venta de stands para potenciar tu marca. Soluciones
+                            creativas y funcionales que elevan tu presencia.</p>
+                        <a href="#contacto" class="btn btn-brand btn-lg">Solicita cotización</a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                    <img src="./img/openart-image_CUhyzqq8_1763572503677_raw_11zon.webp" class="img-fluid rounded-4"
+                        alt="Ejemplo de stand moderno" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="section-muted py-5">
+        <div class="container">
+            <div class="text-center mb-4" data-aos="fade-up">
+                <h2 class="section-title">Nuestros servicios de stands publicitarios</h2>
+                <p class="subtitle">Venta, renta e implementación integral para que tu marca destaque en cualquier
+                    evento.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+                    <div class="card card-service h-100">
+                        <img src="./img/openart-image_4sOCYXkR_1763572499450_raw_11zon.webp" class="card-img-top"
+                            alt="Venta de stands personalizados">
+                        <div class="card-body">
+                            <span class="badge text-light mb-2">Personalizados</span>
+                            <h5 class="card-title">Venta de stands personalizados</h5>
+                            <p class="card-text">Explora nuestras amplias opciones de stands en venta. Adaptamos cada
+                                diseño a tus necesidades, garantizando que tu marca se destaque en cualquier evento.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card card-service h-100">
+                        <img src="./img/openart-image_ewL-xuBE_1763572501155_raw_11zon.webp" class="card-img-top"
+                            alt="Renta de stands para eventos y ferias">
+                        <div class="card-body">
+                            <span class="badge text-light mb-2">Eventos y ferias</span>
+                            <h5 class="card-title">Renta de stands para eventos y ferias</h5>
+                            <p class="card-text">Alquila nuestros stands de alta calidad. Ofrecemos soluciones prácticas
+                                y atractivas que capturan la atención de tu audiencia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card card-service h-100">
+                        <img src="./img/openart-image_wZ_ykgqL_1763572328404_raw_11zon.webp" class="card-img-top"
+                            alt="Servicio integral de implementación">
+                        <div class="card-body">
+                            <span class="badge text-light mb-2">Llave en mano</span>
+                            <h5 class="card-title">Servicio integral de implementación</h5>
+                            <p class="card-text">Desde el diseño hasta el montaje, nuestro equipo se encarga de todo el
+                                proceso. Enfócate en tu evento mientras nosotros nos ocupamos de los detalles técnicos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="#contacto" class="btn btn-brand btn-lg">Solicitar cotización</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencia y Valores -->
+    <section id="experiencia" class="experience py-5">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title mb-3">Experiencia y valores</h2>
+                    <p class="mb-4">En Alter Stands, creemos en la excelencia y la creatividad.</p>
+
+                    <h5 class="mb-2">Nuestra experiencia</h5>
+                    <p>Con más de 10 años en el mercado, ofrecemos ideas de diseño y construcción de stands que se
+                        adaptan a sus eventos. Hemos trabajado con empresas de renombre a nivel internacional,
+                        destacando siempre por nuestra creatividad y calidad en cada proyecto.</p>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1600&auto=format&fit=crop"
+                        class="img-fluid rounded-4 mb-4" alt="Booth tecnológico, iluminación y pantallas" />
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="value-item h-100">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="fa-solid fa-award mt-1"></i>
+                                    <div>
+                                        <strong>Excelencia</strong>
+                                        <p class="mb-0 small">Comprometidos con la entrega de productos de alta calidad.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="value-item h-100">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="fa-solid fa-lightbulb mt-1"></i>
+                                    <div>
+                                        <strong>Creatividad</strong>
+                                        <p class="mb-0 small">Ideas innovadoras en diseño y tecnología para stands
+                                            únicos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="value-item h-100">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="fa-solid fa-clock mt-1"></i>
+                                    <div>
+                                        <strong>Puntualidad</strong>
+                                        <p class="mb-0 small">Cumplimos los plazos establecidos en cada proyecto.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="value-item h-100">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="fa-solid fa-shield-halved mt-1"></i>
+                                    <div>
+                                        <strong>Responsabilidad</strong>
+                                        <p class="mb-0 small">Seriedad y control en cada etapa del proceso.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="value-item">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="fa-solid fa-handshake mt-1"></i>
+                                    <div>
+                                        <strong>Honestidad</strong>
+                                        <p class="mb-0 small">Relaciones de confianza y transparencia con nuestros
+                                            clientes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- values grid -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería (preview simple) -->
+    <section id="galeria" class="py-5">
+        <div class="container">
+            <div class="text-center mb-4" data-aos="fade-up">
+                <h2 class="section-title">Galería</h2>
+                <p class="subtitle">Proyectos destacados que muestran nuestro diseño y ejecución.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop"
+                        class="img-fluid rounded-4" alt="Stand corporativo con pantallas">
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1600&auto=format&fit=crop"
+                        class="img-fluid rounded-4" alt="Zona de demostración y branding">
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="/img/openart-image_0s_DHAZJ_1763572501546_raw_11zon.webp" class="img-fluid rounded-4"
+                        alt="Recepción de stand con estructuras curvas">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="section-muted py-5">
+        <div class="container">
+            <div class="text-center mb-4" data-aos="fade-up">
+                <h2 class="section-title">Comentarios de nuestros clientes</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <img class="avatar" src="https://randomuser.me/api/portraits/men/44.jpg" alt="Foto cliente">
+                            <div>
+                                <strong>Osiel Morales</strong>
+                                <div class="small text-muted">D.T.</div>
+                            </div>
+                        </div>
+                        <div class="stars mb-2">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="mb-0">“Rent a Stand” puede facilitar los procesos de trabajo, ya que su conocimiento
+                            profesional en el área de stands es muy amplio. Su equipo de trabajo es muy profesional y
+                            comprometido. Me ayudaron a resolver un problema con un stand que no se había entregado en
+                            tiempo y forma. Definitivamente los recomendaría para cualquier tipo de evento.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <img class="avatar" src="https://randomuser.me/api/portraits/women/65.jpg"
+                                alt="Foto cliente">
+                            <div>
+                                <strong>María R.</strong>
+                                <div class="small text-muted">Gerente de Eventos</div>
+                            </div>
+                        </div>
+                        <div class="stars mb-2">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="mb-0">Estamos encantados con el servicio de Rent a Stand. Su diseño creativo y
+                            funcional hizo que nuestro evento fuera un éxito. Además, su equipo fue muy atento y
+                            profesional durante todo el proceso. Sin duda, volveremos a trabajar con ellos en futuros
+                            proyectos.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <img class="avatar" src="https://randomuser.me/api/portraits/men/12.jpg" alt="Foto cliente">
+                            <div>
+                                <strong>Juan L.</strong>
+                                <div class="small text-muted">Director Comercial</div>
+                            </div>
+                        </div>
+                        <div class="stars mb-2">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="mb-0">Trabajar con Rent a Stand fue una experiencia excelente. Desde el primer
+                            contacto, demostraron un alto nivel de compromiso y profesionalismo. El stand que nos
+                            proporcionaron superó nuestras expectativas en diseño y funcionalidad. Recomiendo
+                            ampliamente sus servicios.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="contact-form">
+                        <h3 class="mb-3">¡Contáctanos YA!</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="name" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Número de contacto</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="+52 55 0000 0000"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="message" rows="4"
+                                    placeholder="Cuéntanos sobre tu proyecto" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-brand w-100">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                    <div class="contact-info h-100">
+                        <h3 class="mb-3">Datos de contacto</h3>
+                        <p class="mb-3">Ubicaciones: Acapulco, CDMX, Querétaro, Monterrey y Cancún</p>
+                        <div class="d-flex flex-column gap-2">
+                            <div><i class="fa-solid fa-phone me-2"></i> <a href="tel:+525568459191">+52 55 6845 9191</a>
+                            </div>
+                            <div><i class="fa-solid fa-envelope me-2"></i> <a
+                                    href="mailto:hola@gallo-stands.com.mx">hola@gallo-stands.com.mx</a></div>
+                            <div><i class="fa-solid fa-globe me-2"></i> <a href="https://www.gallo-stands.com.mx"
+                                    target="_blank" rel="noopener">www.gallo-stands.com.mx</a></div>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <a class="btn btn-sm btn-outline-light ms-1" href="https://wa.me/525568459191"
+                                target="_blank" rel="noopener">Contactar por WhatsApp</a>
+                        </div>
+
+                        <div class="mt-4">
+                            <p class="small mb-1">Horarios de atención</p>
+                            <ul class="small text-light ps-3 mb-0">
+                                <li>Lunes a Viernes: 9:00–18:00</li>
+                                <li>Sábado: 10:00–14:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WhatsApp floating -->
+    <div class="whatsapp-float" data-aos="zoom-in">
+        <a class="whatsapp-button" href="https://wa.me/525568459191" target="_blank" rel="noopener"
+            aria-label="Contáctanos por WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Contáctanos</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+                <div class="small">Todos los derechos reservados de Gallo Stands 2023</div>
+                <ul class="nav">
+                    <li class="nav-item"><a href="#servicios" class="nav-link px-2 text-secondary">Servicios</a></li>
+                    <li class="nav-item"><a href="#experiencia" class="nav-link px-2 text-secondary">Experiencia</a>
+                    </li>
+                    <li class="nav-item"><a href="#galeria" class="nav-link px-2 text-secondary">Galería</a></li>
+                    <li class="nav-item"><a href="#contacto" class="nav-link px-2 text-secondary">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 700,
+            easing: 'ease-out-quart',
+            once: true
+        });
+    </script>
+</body>
+
+</html>
